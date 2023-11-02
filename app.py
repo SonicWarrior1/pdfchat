@@ -1,4 +1,3 @@
-from langchain import hub
 from langchain.chains import RetrievalQA
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain.callbacks.manager import CallbackManager
@@ -88,9 +87,7 @@ if uploaded_file is not None:
             )
             st.session_state.vectorstore.persist()
 
-    # st.write("Upload successful. You can now start asking questions about the PDF.")
-    if 'retriever' not in st.session_state:
-        st.session_state.retriever = st.session_state.vectorstore.as_retriever()
+    st.session_state.retriever = st.session_state.vectorstore.as_retriever()
     # Initialize the QA chain
     if 'qa_chain' not in st.session_state:
         st.session_state.qa_chain = RetrievalQA.from_chain_type(
