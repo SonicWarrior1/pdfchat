@@ -1,7 +1,7 @@
 # Local PDF Chat Application with Mistral 7B LLM, Langchain, Ollama, and Streamlit
 
 A PDF chatbot is a chatbot that can answer questions about a PDF file. It can do this by using a large language model (LLM) to understand the user's query and then searching the PDF file for the relevant information. The application uses the concept of Retrieval-Augmented Generation (RAG) to generate responses in the context of a particular document. RAG applications augment their generation capabilities by retrieving relevant information from an external knowledge base. This allows RAG applications to produce more informative and comprehensive responses to a wider range of prompts and questions.
-### For detailed explaination of how this works follow my [Medium Artcle]()
+### For detailed explaination of how this works follow my [Medium Artcle](https://medium.com/@harjot802/building-a-local-pdf-chat-application-with-mistral-7b-llm-langchain-ollama-and-streamlit-67b314fbab57)
 ## Running Mistral 7B Locally using Ollama 🦙
 
 Ollama allows you to run open-source large language models, such as Llama 2, locally. It bundles model weights, configuration, and data into a single package, defined by a Modelfile, optimizing setup and configuration details, including GPU usage.
