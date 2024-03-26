@@ -1,11 +1,11 @@
 from langchain.chains import RetrievalQA
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain.callbacks.manager import CallbackManager
-from langchain.llms import Ollama
-from langchain.embeddings.ollama import OllamaEmbeddings
-from langchain.vectorstores import Chroma
+from langchain_community.llms import Ollama
+from langchain_community.embeddings.ollama import OllamaEmbeddings
+from langchain_community.vectorstores import Chroma
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.document_loaders import PyPDFLoader
+from langchain_community.document_loaders import PyPDFLoader
 from langchain.prompts import PromptTemplate
 from langchain.memory import ConversationBufferMemory
 import streamlit as st
@@ -38,16 +38,16 @@ if 'memory' not in st.session_state:
         input_key="question")
 if 'vectorstore' not in st.session_state:
     st.session_state.vectorstore = Chroma(persist_directory='jj',
-                        embedding_function=OllamaEmbeddings(
-                            model="mistral:instruct")
-                        )
+                                          embedding_function=OllamaEmbeddings(base_url='http://localhost:11434',
+                                                                              model="mistral")
+                                          )
 if 'llm' not in st.session_state:
     st.session_state.llm = Ollama(base_url="http://localhost:11434",
-                model="mistral:instruct",
-                verbose=True,
-                callback_manager=CallbackManager(
-                    [StreamingStdOutCallbackHandler()]),
-                )
+                                  model="mistral",
+                                  verbose=True,
+                                  callback_manager=CallbackManager(
+                                      [StreamingStdOutCallbackHandler()]),
+                                  )
 
 # Initialize session state
 if 'chat_history' not in st.session_state:
